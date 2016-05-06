@@ -34,5 +34,6 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
     @Override
     public void mostrarPizzas(List<Pizza> Pizzas) {
         ListadoPizzasAdapter adapter = new ListadoPizzasAdapter(Pizzas,this);
+        lstPizzas.setAdapter(adapter);
     }
 }

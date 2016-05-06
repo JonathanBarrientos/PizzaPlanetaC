@@ -21,20 +21,22 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
 
         List<Pizza> pizzas = new ArrayList<>();
         Pizza pi = new Pizza();
+        Pizza p1 = new Pizza();
 
         pi.setId(1);
         pi.setNombre("Americana");
         pi.setTamaño("M");
+
         pi.setImg("@drawable/americana");
 
         pizzas.add(pi);
 
-        pi.setId(2);
-        pi.setNombre("Bacon");
-        pi.setTamaño("L");
-        pi.setImg("@drawable/bacon");
+        p1.setId(2);
+        p1.setNombre("Bacon");
+        p1.setTamaño("L");
+        p1.setImg("@drawable/bacon");
 
-        pizzas.add(pi);
+        pizzas.add(p1);
 
        lview.mostrarPizzas(pizzas);
     }
