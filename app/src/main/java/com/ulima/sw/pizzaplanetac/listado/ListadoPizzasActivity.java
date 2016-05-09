@@ -24,6 +24,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         setPresenter(new ListadoPizzasPresenterImp(this));
 
         lPresenter.obtenerListaP();
+
     }
 
     @Override
