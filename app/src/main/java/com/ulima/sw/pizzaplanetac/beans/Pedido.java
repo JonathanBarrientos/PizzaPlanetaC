@@ -8,7 +8,70 @@ import java.util.List;
  */
 public class Pedido {
     int id;
-    String estado;
+    Estado estado;
+    Cliente cli;
+    String direccion;
+    float monto;
     List<Pizza> pizzas;
-    Date hora;
+    List<Producto> productos;
+
+    public Pedido() {
+    }
+
+    public Pedido(int id, Estado estado, Cliente cli, String direccion, float monto, List<Pizza> pizzas) {
+        this.id = id;
+        this.estado = estado;
+        this.cli = cli;
+        this.direccion = direccion;
+        this.monto = monto;
+        this.pizzas = pizzas;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Cliente getCli() {
+        return cli;
+    }
+
+    public void setCli(Cliente cli) {
+        this.cli = cli;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public float getMonto() {
+        return monto;
+    }
+
+    public void setMonto(float monto) {
+        this.monto = monto;
+    }
+
+    public List<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
 }

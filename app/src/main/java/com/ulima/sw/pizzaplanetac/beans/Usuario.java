@@ -5,8 +5,10 @@ import java.io.Serializable;
 
 
 public class Usuario implements Serializable {
-    private String usuario;
-    private String password;
+    String usuario;
+    String password;
+    String correo;
+    int puntos;
 
     public Usuario() {
     }
@@ -30,5 +32,21 @@ public class Usuario implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
     }
 }

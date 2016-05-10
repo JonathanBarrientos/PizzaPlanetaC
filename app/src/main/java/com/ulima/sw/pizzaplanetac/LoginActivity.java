@@ -28,16 +28,15 @@ public  class LoginActivity extends AppCompatActivity {
         String username = eteUsuario.getText().toString();
         String password = etePassword.getText().toString();
 
-        if ((username.trim().equals("Pizza")) &&
+        if ((username.trim().toLowerCase().equals("pizza")) &&
                 password.equals("planeta") ){
-
-            eteUsuario.setText(null);
-            etePassword.setText(null);
             // Login correcto
             Usuario usuario = new Usuario(username, password);
             Intent intent = new Intent(this, ListadoPizzasActivity.class);
             //intent.putExtra("username", username);
             intent.putExtra("usuario", usuario);
+            eteUsuario.setText(null);
+            etePassword.setText(null);
 
             startActivity(intent);
         }else{
