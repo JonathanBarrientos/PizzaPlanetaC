@@ -5,10 +5,10 @@ import java.io.Serializable;
 
 
 public class Usuario implements Serializable {
-    String usuario;
-    String password;
-    String correo;
-    int puntos;
+    private String usuario;
+    private String password;
+    private String correo;
+    private int puntos;
 
     public Usuario() {
     }

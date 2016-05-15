@@ -7,13 +7,13 @@ import java.util.List;
  * Created by Admin on 9/05/2016.
  */
 public class Pedido {
-    int id;
-    Estado estado;
-    Cliente cli;
-    String direccion;
-    float monto;
-    List<Pizza> pizzas;
-    List<Producto> productos;
+    private int id;
+    private Estado estado;
+    private Cliente cli;
+    private String direccion;
+    private float monto;
+    private List<Pizza> pizzas;
+    private List<Producto> productos;
 
     public Pedido() {
     }

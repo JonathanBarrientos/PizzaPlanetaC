@@ -4,9 +4,9 @@ package com.ulima.sw.pizzaplanetac.beans;
  * Created by fixt on 10/05/16.
  */
 public class Producto {
-    int id;
-    String nombre;
-    float precio;
+    private  int id;
+    private  String nombre;
+    private float precio;
 
     public Producto() {
     }

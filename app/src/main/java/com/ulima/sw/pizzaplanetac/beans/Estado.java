@@ -6,24 +6,24 @@ import java.util.Date;
  * Created by fixt on 10/05/16.
  */
 public class Estado {
-    Date hora;
-    int id;
-    int estado;
+    private String hora;
+    private int id;
+    private int estado;
 
     public Estado() {
     }
 
-    public Estado(Date hora, int id, int estado) {
+    public Estado(String hora, int id, int estado) {
         this.hora = hora;
         this.id = id;
         this.estado = estado;
     }
 
-    public Date getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

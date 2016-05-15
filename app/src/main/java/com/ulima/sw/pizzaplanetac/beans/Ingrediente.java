@@ -4,8 +4,8 @@ package com.ulima.sw.pizzaplanetac.beans;
  * Created by fixt on 05/05/16.
  */
 public class Ingrediente {
-    int id;
-    String nombre;
+    private int id;
+    private String nombre;
 
     public Ingrediente(int id, String nombre) {
         this.id = id;

@@ -5,9 +5,9 @@ package com.ulima.sw.pizzaplanetac.beans;
  */
 public class Cliente {
 
-    int id,telefono;
-    String nombre,apellido,dni,edad;
-    Usuario user;
+    private int id,telefono;
+    private String nombre,apellido,dni,edad;
+    private Usuario user;
 
     public Cliente() {
     }
