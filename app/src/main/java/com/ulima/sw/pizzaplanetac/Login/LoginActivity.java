@@ -15,9 +15,10 @@ import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
 
-    LoginPresenter lPresenter;
-    EditText eteUsuario, etePassword;
-    ProgressDialog dialog;
+    private LoginPresenter lPresenter;
+    private EditText eteUsuario, etePassword;
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //setTheme(R.style.PichangersTheme);
