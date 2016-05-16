@@ -1,26 +1,38 @@
 package com.ulima.sw.pizzaplanetac.listado;
 
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.github.ksoichiro.android.observablescrollview.ObservableListView;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.ulima.sw.pizzaplanetac.R;
 import com.ulima.sw.pizzaplanetac.adapter.ListadoPizzasAdapter;
 import com.ulima.sw.pizzaplanetac.beans.Pizza;
 
 import java.util.List;
 
-public class ListadoPizzasActivity extends AppCompatActivity implements ListadoPizzasView {
+public class ListadoPizzasActivity extends AppCompatActivity implements ListadoPizzasView, ObservableScrollViewCallbacks {
 
-    ListadoPizzasPresenter lPresenter;
-    ListView lstPizzas;
+    private ListadoPizzasPresenter lPresenter;
+    private ListView lstPizzas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Escoja integrante");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.activity_listado_pizzas);
 
-        lstPizzas = (ListView)findViewById(R.id.lstPizza);
+
+        lstPizzas = (ObservableListView)findViewById(R.id.lstPizza);
         setPresenter(new ListadoPizzasPresenterImp(this));
 
         lPresenter.obtenerListaP();
@@ -36,5 +48,48 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
     public void mostrarPizzas(List<Pizza> Pizzas) {
         ListadoPizzasAdapter adapter = new ListadoPizzasAdapter(Pizzas,this);
         lstPizzas.setAdapter(adapter);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                if (getParentActivityIntent() == null) {
+                    Log.i("TAG", "You have forgotten to specify the parentActivityName in the AndroidManifest!");
+                    onBackPressed();
+                } else {
+                    NavUtils.navigateUpFromSameTask(this);
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
+
+    }
+
+    @Override
+    public void onDownMotionEvent() {
+
+    }
+
+    @Override
+    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        ActionBar ab = getSupportActionBar();
+        if (ab == null) {
+            return;
+        }
+        if (scrollState == ScrollState.UP) {
+            if (ab.isShowing()) {
+                ab.hide();
+            }
+        } else if (scrollState == ScrollState.DOWN) {
+            if (!ab.isShowing()) {
+                ab.show();
+            }
+        }
+
     }
 }

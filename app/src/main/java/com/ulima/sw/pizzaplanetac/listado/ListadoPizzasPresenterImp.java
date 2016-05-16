@@ -1,5 +1,6 @@
 package com.ulima.sw.pizzaplanetac.listado;
 
+import com.ulima.sw.pizzaplanetac.beans.Pedido;
 import com.ulima.sw.pizzaplanetac.beans.Pizza;
 
 import java.util.ArrayList;
@@ -18,6 +19,10 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
 
     @Override
     public void obtenerListaP() {
+
+        List<Pedido> pedidos = new ArrayList<>();
+
+
 
         List<Pizza> pizzas = new ArrayList<>();
         Pizza pi = new Pizza();

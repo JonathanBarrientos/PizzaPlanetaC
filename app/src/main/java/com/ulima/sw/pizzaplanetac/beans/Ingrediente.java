@@ -1,9 +1,11 @@
 package com.ulima.sw.pizzaplanetac.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by fixt on 05/05/16.
  */
-public class Ingrediente {
+public class Ingrediente implements Serializable{
     private int id;
     private String nombre;
 

@@ -1,5 +1,6 @@
 package com.ulima.sw.pizzaplanetac.beans;
 
+
 import java.util.List;
 
 /**
@@ -14,6 +15,13 @@ public class Pizza {
 
     public Pizza() {
     }
+
+    public Pizza(float precio, List<Ingrediente> ing) {
+        this.precio = precio;
+        this.ing = ing;
+    }
+    
+    
 
     public Pizza(int id, int tipo, String nombre, String tamaño, float precio, List<Ingrediente> ing, String img) {
         this.id = id;
