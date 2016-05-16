@@ -1,5 +1,6 @@
 package com.ulima.sw.pizzaplanetac.listado;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,19 +21,29 @@ import java.util.List;
 public class ListadoPizzasActivity extends AppCompatActivity implements ListadoPizzasView, ObservableScrollViewCallbacks {
 
     private ListadoPizzasPresenter lPresenter;
-    private ListView lstPizzas;
+    private ObservableListView lstPizzas;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Escoja integrante");
+        setTitle("Listado Pizzas");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.activity_listado_pizzas);
 
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("Cargando... Por favor espere");
+        dialog.setIndeterminate(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
 
         lstPizzas = (ObservableListView)findViewById(R.id.lstPizza);
+        lstPizzas.setScrollViewCallbacks(this);
+
         setPresenter(new ListadoPizzasPresenterImp(this));
 
         lPresenter.obtenerListaP();
@@ -48,6 +59,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
     public void mostrarPizzas(List<Pizza> Pizzas) {
         ListadoPizzasAdapter adapter = new ListadoPizzasAdapter(Pizzas,this);
         lstPizzas.setAdapter(adapter);
+        dialog.dismiss();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

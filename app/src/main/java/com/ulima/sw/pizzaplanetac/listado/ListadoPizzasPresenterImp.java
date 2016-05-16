@@ -22,8 +22,6 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
 
         List<Pedido> pedidos = new ArrayList<>();
 
-
-
         List<Pizza> pizzas = new ArrayList<>();
         Pizza pi = new Pizza();
         Pizza p1 = new Pizza();
@@ -35,13 +33,14 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
         pi.setImg("@drawable/americana");
 
         pizzas.add(pi);
-
         p1.setId(2);
         p1.setNombre("Bacon");
-        p1.setTamaño("L");
+        p1.setTamaño("F");
         p1.setImg("@drawable/bacon");
 
         pizzas.add(p1);
+
+
 
        lview.mostrarPizzas(pizzas);
     }

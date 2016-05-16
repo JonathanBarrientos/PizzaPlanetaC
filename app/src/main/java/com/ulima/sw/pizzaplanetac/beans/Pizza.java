@@ -13,6 +13,7 @@ public class Pizza {
     private List<Ingrediente> ing;
     private String img;
 
+
     public Pizza() {
     }
 
@@ -20,8 +21,13 @@ public class Pizza {
         this.precio = precio;
         this.ing = ing;
     }
-    
-    
+
+    public Pizza(int id, String nombre, String tamaño, String img) {
+        this.id = id;
+        this.nombre = nombre;
+        this.img = img;
+        this.tamaño = tamaño;
+    }
 
     public Pizza(int id, int tipo, String nombre, String tamaño, float precio, List<Ingrediente> ing, String img) {
         this.id = id;
