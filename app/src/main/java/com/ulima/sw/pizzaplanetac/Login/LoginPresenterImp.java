@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
 import com.ulima.sw.pizzaplanetac.beans.Mensaje;
 import com.ulima.sw.pizzaplanetac.beans.Usuario;
+import com.ulima.sw.pizzaplanetac.dao.LoginDAO;
 import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
 
 import retrofit2.Call;
@@ -46,8 +47,16 @@ public class LoginPresenterImp implements LoginPresenter {
             }
         });*/
 
-        if ((user.getUsuario().trim().toLowerCase().equals("pizza")) &&
+        /*if ((user.getUsuario().trim().toLowerCase().equals("pizza")) &&
                 user.getPassword().equals("planeta") ){
+            lView.callActiviy("OK");
+        }else{
+            lView.callActiviy("Credenciales Erradas");
+        }*/
+
+        LoginDAO dao = new LoginDAO();
+        int val = dao.login(user.getUsuario().trim().toLowerCase(),user.getPassword());
+        if (val == 1) {
             lView.callActiviy("OK");
         }else{
             lView.callActiviy("Credenciales Erradas");
