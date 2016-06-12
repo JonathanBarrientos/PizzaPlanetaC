@@ -6,7 +6,6 @@ import android.widget.Toast;
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
 import com.ulima.sw.pizzaplanetac.beans.Mensaje;
 import com.ulima.sw.pizzaplanetac.beans.Usuario;
-import com.ulima.sw.pizzaplanetac.dao.LoginDAO;
 import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
 
 import retrofit2.Call;
@@ -29,37 +28,31 @@ public class LoginPresenterImp implements LoginPresenter {
     @Override
     public void obtenerLogin(Usuario user) {
 
-        /*Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://pichangers-api.mybluemix.net/rest/")
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         PizzaPService service = retrofit.create(PizzaPService.class);
-        service.obtenerLogin(user).enqueue(new Callback<Mensaje>() {
+        service.obtenerLogin(user.getUsuario(),user.getPassword()).enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<Mensaje> call, Response<Mensaje> response) {
-                lView.callActiviy(response.body().getMsg());
+            public void onResponse(Call<String> call, Response<String> response) {
+                lView.callActiviy(response.body());
             }
 
             @Override
-            public void onFailure(Call<Mensaje> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
 
             }
-        });*/
+        });
 
-        /*if ((user.getUsuario().trim().toLowerCase().equals("pizza")) &&
-                user.getPassword().equals("planeta") ){
-            lView.callActiviy("OK");
-        }else{
-            lView.callActiviy("Credenciales Erradas");
-        }*/
+        //if ((user.getUsuario().trim().toLowerCase().equals("pizza")) &&
+        //        user.getPassword().equals("planeta") ){
+        //    lView.callActiviy("OK");
+        //}else{
+         //   lView.callActiviy("Credenciales Erradas");
+        //}
 
-        LoginDAO dao = new LoginDAO();
-        int val = dao.login(user.getUsuario().trim().toLowerCase(),user.getPassword());
-        if (val == 1) {
-            lView.callActiviy("OK");
-        }else{
-            lView.callActiviy("Credenciales Erradas");
-        }
+
     }
 }

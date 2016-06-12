@@ -12,6 +12,8 @@ public class Pizza {
     private float precio;
     private List<Ingrediente> ing;
     private String img;
+    private List<Tamano> tam; //solo para pizzas definidas
+
 
 
     public Pizza() {
@@ -93,5 +95,13 @@ public class Pizza {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public List<Tamano> getTam() {
+        return tam;
+    }
+
+    public void setTam(List<Tamano> tam) {
+        this.tam = tam;
     }
 }

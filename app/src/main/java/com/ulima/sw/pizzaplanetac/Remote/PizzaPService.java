@@ -11,14 +11,15 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by fixt on 11/05/16.
  */
 
     public interface PizzaPService {
-        @POST("alumnos/login")
-        Call<Mensaje> obtenerLogin(@Body Usuario user);
+        @GET("loginTrabajador")
+        Call<String> obtenerLogin(@Query("usuario") String usuario, @Query("password") String password);
 
         //@GET("equipos")
         //Call<List<Equipo>> obtenerEquipos();

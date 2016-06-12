@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
         this.puntos=0;
     }
 
-    
+
 
     public String getUsuario() {
         return usuario;

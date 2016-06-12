@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         eteUsuario = (EditText) findViewById(R.id.txtUsuario);
         etePassword = (EditText) findViewById(R.id.txtContra);
 
+
     }
 
     public void onLoginClicked(View view){
@@ -53,13 +54,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     @Override
     public void callActiviy(String resp) {
 
-        if (resp.equalsIgnoreCase("OK")){
+        if (resp.equalsIgnoreCase("1")){
             Intent intent = new Intent(this, ListadoPizzasActivity.class);
             eteUsuario.setText(null);
             etePassword.setText(null);
             startActivity(intent);
         }else{
-            Toast.makeText(this, resp, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Credenciales Erradas", Toast.LENGTH_SHORT).show();
 
         }
         dialog.dismiss();
