@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
-import com.ulima.sw.pizzaplanetac.beans.Mensaje;
 import com.ulima.sw.pizzaplanetac.beans.Usuario;
 import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
 

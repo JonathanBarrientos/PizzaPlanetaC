@@ -37,7 +37,6 @@ public class Pizza {
         this.nombre = nombre;
         this.tamaño = tamaño;
         this.precio = precio;
-        this.ing = ing;
         this.img = img;
     }
 
