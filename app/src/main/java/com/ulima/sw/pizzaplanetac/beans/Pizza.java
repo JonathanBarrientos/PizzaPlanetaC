@@ -1,12 +1,13 @@
 package com.ulima.sw.pizzaplanetac.beans;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by fixt on 05/05/16.
  */
-public class Pizza {
+public class Pizza implements Serializable{
     private int id, tipo;
     private String nombre, tamaño;
     private float precio;

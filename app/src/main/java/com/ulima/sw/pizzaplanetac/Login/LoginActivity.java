@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ulima.sw.pizzaplanetac.Pedido.GridActivityT;
 import com.ulima.sw.pizzaplanetac.R;
 import com.ulima.sw.pizzaplanetac.beans.Usuario;
 import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
@@ -55,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     public void callActiviy(String resp) {
 
         if (resp.equalsIgnoreCase("1")){
-            Intent intent = new Intent(this, ListadoPizzasActivity.class);
+            Intent intent = new Intent(this, GridActivityT.class);
             eteUsuario.setText(null);
             etePassword.setText(null);
             startActivity(intent);

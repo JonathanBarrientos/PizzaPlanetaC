@@ -63,7 +63,11 @@ public class ListadoPizzasAdapter extends BaseAdapter{
         Pizza pizza = lProductos.get(position);
 
         viewHolder.tviNum.setText("N#:" + pizza.getId());
-        viewHolder.tviNombre.setText("Nombre: " + pizza.getNombre());
+        if (pizza.getNombre() == null){
+            viewHolder.tviNombre.setText("Nombre: Personalizada");
+        }else {
+            viewHolder.tviNombre.setText("Nombre: " + pizza.getNombre());
+        }
         viewHolder.tviTamaño.setText("Tamaño: " + pizza.getTamaño());
         if (pizza.getId() == 2) {
             viewHolder.iviPizza.setImageResource(R.drawable.bacon);

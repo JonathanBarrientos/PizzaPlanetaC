@@ -1,6 +1,7 @@
 package com.ulima.sw.pizzaplanetac.Remote;
 
-import com.ulima.sw.pizzaplanetac.beans.Mensaje;
+
+import com.ulima.sw.pizzaplanetac.beans.Pedido;
 import com.ulima.sw.pizzaplanetac.beans.Usuario;
 
 import java.util.List;
@@ -21,8 +22,8 @@ import retrofit2.http.Query;
         @GET("loginTrabajador")
         Call<String> obtenerLogin(@Query("usuario") String usuario, @Query("password") String password);
 
-        //@GET("equipos")
-        //Call<List<Equipo>> obtenerEquipos();
+        @GET("getPedidos")
+        Call<List<Pedido>> obtenerPedidos();
 
         //@GET("equipos/{id}")
         //Call<Equipo> obtenerEquipoID(@Path("id") int id);
