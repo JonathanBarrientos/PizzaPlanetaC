@@ -28,7 +28,7 @@ public class LoginPresenterImp implements LoginPresenter {
     public void obtenerLogin(Usuario user) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
+                .baseUrl("http://pizzac.mybluemix.net/webresources/generic/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

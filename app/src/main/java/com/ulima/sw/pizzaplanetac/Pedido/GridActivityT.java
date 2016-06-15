@@ -2,6 +2,8 @@ package com.ulima.sw.pizzaplanetac.Pedido;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -38,6 +40,7 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         setContentView(R.layout.activity_grid);
         dialog = new ProgressDialog(this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -68,7 +71,7 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
     }
 
     @Override
-    public void mostrarEquipos(final List<Pedido> pedidos) {
+    public void mostrarPedidos(final List<Pedido> pedidos) {
         adapter = new ListadoPedidosAdapter(pedidos,this);
         GridPedidos.setAdapter(adapter);
         dialog.dismiss();

@@ -45,6 +45,7 @@ public class ListadoPedidosAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
+        int cont;
         ViewHolder viewHolder;
         if (view == null){
             view = mInflater.inflate(R.layout.pedidoitm, null);
@@ -57,7 +58,8 @@ public class ListadoPedidosAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         final Pedido pedido = lPedidos.get(position);
-        viewHolder.txtPedido.setText("Pedido #"+position);
+        cont = position + 1;
+        viewHolder.txtPedido.setText("Pedido #"+cont);
         viewHolder.txtHora.setText(pedido.getEstado().getHora());
         if (pedido.getEstado().getId() == 0) {
             viewHolder.imgE.setImageResource(R.drawable.rojo);

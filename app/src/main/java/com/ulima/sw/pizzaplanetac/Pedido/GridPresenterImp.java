@@ -1,8 +1,11 @@
 package com.ulima.sw.pizzaplanetac.Pedido;
 
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
+import com.ulima.sw.pizzaplanetac.beans.Estado;
 import com.ulima.sw.pizzaplanetac.beans.Pedido;
+import com.ulima.sw.pizzaplanetac.beans.Pizza;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,8 +28,9 @@ public class GridPresenterImp implements GridPresenter {
     @Override
     public void obtenerPedidos() {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
+        /*Retrofit retrofit = new Retrofit.Builder()
+                //.baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
+                .baseUrl("http://pizzac.mybluemix.net/webresources/generic/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -41,7 +45,68 @@ public class GridPresenterImp implements GridPresenter {
             public void onFailure(Call<List<Pedido>>  call, Throwable t) {
 
             }
-        });
+        });*/
+
+        List<Pedido> pedidos = new ArrayList<>();
+
+        Pedido p = new Pedido();
+        Estado e = new Estado();
+
+        Pedido pr = new Pedido();
+        Estado er = new Estado();
+
+        Pedido pt = new Pedido();
+        Estado et = new Estado();
+
+        e.setId(1);
+        e.setHora("10:00");
+
+        p.setEstado(e);
+
+        List<Pizza> pizzas = new ArrayList<>();
+        Pizza pi = new Pizza();
+        Pizza p1 = new Pizza();
+
+        pi.setId(1);
+        pi.setNombre("Americana");
+        pi.setTamaño("M");
+
+        pi.setImg("@drawable/americana");
+
+        pizzas.add(pi);
+        p1.setId(2);
+        p1.setNombre("Bacon");
+        p1.setTamaño("F");
+        p1.setImg("@drawable/bacon");
+
+        pizzas.add(p1);
+
+
+
+        p.setPizzas(pizzas);
+
+        pedidos.add(p);
+
+        er.setId(2);
+        er.setHora("17:45");
+
+        pr.setEstado(er);
+
+        pr.setPizzas(pizzas);
+
+        pedidos.add(pr);
+
+
+        et.setId(0);
+        et.setHora("5:45");
+
+        pt.setEstado(et);
+
+        pt.setPizzas(pizzas);
+
+        pedidos.add(pt);
+
+        Gview.mostrarPedidos(pedidos);
 
     }
 }

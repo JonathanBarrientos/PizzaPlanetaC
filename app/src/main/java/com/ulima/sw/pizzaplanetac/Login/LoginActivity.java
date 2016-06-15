@@ -2,6 +2,8 @@ package com.ulima.sw.pizzaplanetac.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         //setTheme(R.style.PichangersTheme);
         //setTheme(android.R.style.Theme_Holo);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         eteUsuario = (EditText) findViewById(R.id.txtUsuario);
         etePassword = (EditText) findViewById(R.id.txtContra);

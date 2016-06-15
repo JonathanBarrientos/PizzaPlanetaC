@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface GridViewT {
     public void setPresenter(GridPresenter presenter);
-    public void mostrarEquipos(List<Pedido> pedidos);
+    public void mostrarPedidos(List<Pedido> pedidos);
 }
