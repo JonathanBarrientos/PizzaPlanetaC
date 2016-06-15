@@ -17,8 +17,8 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
         this.lview = lview;
     }
 
-    @Override
-    public void obtenerListaP() {
+
+    public void obtenerListaP2() {
 
         List<Pedido> pedidos = new ArrayList<>();
 
@@ -43,5 +43,10 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
 
 
        lview.mostrarPizzas(pizzas);
+    }
+
+    @Override
+    public void obtenerListaP(List<Pizza> pizzas) {
+        lview.mostrarPizzas(pizzas);
     }
 }

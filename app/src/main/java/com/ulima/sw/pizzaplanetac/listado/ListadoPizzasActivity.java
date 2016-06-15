@@ -1,6 +1,7 @@
 package com.ulima.sw.pizzaplanetac.listado;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -45,8 +46,9 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         lstPizzas.setScrollViewCallbacks(this);
 
         setPresenter(new ListadoPizzasPresenterImp(this));
+        Intent intentPasado = getIntent();
+        lPresenter.obtenerListaP((List<Pizza>)intentPasado.getSerializableExtra("pizzas"));
 
-        lPresenter.obtenerListaP();
 
     }
 
