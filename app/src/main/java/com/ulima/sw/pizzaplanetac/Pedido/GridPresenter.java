@@ -5,4 +5,5 @@ package com.ulima.sw.pizzaplanetac.Pedido;
  */
 public interface GridPresenter {
     public void obtenerPedidos();
+    public void obtenerMensajes();
 }

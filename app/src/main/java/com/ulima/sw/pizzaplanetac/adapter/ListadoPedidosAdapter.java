@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ulima.sw.pizzaplanetac.R;
+import com.ulima.sw.pizzaplanetac.beans.Mensaje;
 import com.ulima.sw.pizzaplanetac.beans.Pedido;
 
 import java.util.List;
@@ -18,11 +19,11 @@ import java.util.List;
  */
 public class ListadoPedidosAdapter extends BaseAdapter {
 
-    private List<Pedido> lPedidos;
+    private List<Mensaje> lPedidos;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public ListadoPedidosAdapter(List<Pedido> pedidos, Context context){
+    public ListadoPedidosAdapter(List<Mensaje> pedidos, Context context){
         mContext = context;
         lPedidos = pedidos;
         mInflater = LayoutInflater.from(context);
@@ -57,15 +58,15 @@ public class ListadoPedidosAdapter extends BaseAdapter {
         }else{
             viewHolder = (ViewHolder) view.getTag();
         }
-        final Pedido pedido = lPedidos.get(position);
+        final Mensaje pedido = lPedidos.get(position);
         cont = position + 1;
         viewHolder.txtPedido.setText("Pedido #"+cont);
-        viewHolder.txtHora.setText(pedido.getEstado().getHora());
-        if (pedido.getEstado().getId() == 0) {
+        viewHolder.txtHora.setText(pedido.getHora());
+        if (pedido.getEstado()== 0) {
             viewHolder.imgE.setImageResource(R.drawable.rojo);
-        }else if (pedido.getEstado().getId() == 1) {
+        }else if (pedido.getEstado() == 1) {
             viewHolder.imgE.setImageResource(R.drawable.amarillo);
-        }else if (pedido.getEstado().getId() == 2) {
+        }else if (pedido.getEstado() == 2) {
                 viewHolder.imgE.setImageResource(R.drawable.verde);
         }
 

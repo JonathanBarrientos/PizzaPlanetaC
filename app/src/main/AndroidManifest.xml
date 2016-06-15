@@ -17,8 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".listado.ListadoPizzasActivity" />
-        <activity android:name=".Pedido.GridActivityT"></activity>
+        <activity
+            android:name=".listado.ListadoPizzasActivity"
+            android:parentActivityName=".Pedido.GridActivityT" />
+        <activity
+            android:name=".Pedido.GridActivityT"
+            android:parentActivityName=".Login.LoginActivity" />
+        <activity android:name=".ingredientes.IngredientesActivity"></activity>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Random;
 
 import com.ulima.sw.pizzaplanetac.R;
 import com.ulima.sw.pizzaplanetac.beans.Pizza;
@@ -48,6 +49,7 @@ public class ListadoPizzasAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
+        int acu;
         ViewHolder viewHolder;
         if (view == null){
             view = mInflater.inflate(R.layout.pizzaitm, null);
@@ -61,16 +63,18 @@ public class ListadoPizzasAdapter extends BaseAdapter{
         }
 
         Pizza pizza = lProductos.get(position);
+        acu = position +1;
+        int tmp = (int) ( Math.random() * 2 + 1);
+        viewHolder.tviNum.setText("N#"+acu);
+        viewHolder.tviNombre.setText("Nom: "  + pizza.getNombrePizza());
+        viewHolder.tviTamaño.setText("Tam: " + pizza.getTamano());
+        if (pizza.getUrl().equals(" ")) {
+            if (tmp  == 1){
+                viewHolder.iviPizza.setImageResource(R.drawable.bacon);
+            }else{
+                viewHolder.iviPizza.setImageResource(R.drawable.americana);
+            }
 
-        viewHolder.tviNum.setText("N#:" + pizza.getId());
-        if (pizza.getNombre() == null){
-            viewHolder.tviNombre.setText("Nombre: Personalizada");
-        }else {
-            viewHolder.tviNombre.setText("Nombre: " + pizza.getNombre());
-        }
-        viewHolder.tviTamaño.setText("Tamaño: " + pizza.getTamaño());
-        if (pizza.getId() == 2) {
-            viewHolder.iviPizza.setImageResource(R.drawable.bacon);
         }
        //
 

@@ -1,7 +1,9 @@
 package com.ulima.sw.pizzaplanetac.Remote;
 
 
+import com.ulima.sw.pizzaplanetac.beans.Mensaje;
 import com.ulima.sw.pizzaplanetac.beans.Pedido;
+import com.ulima.sw.pizzaplanetac.beans.Pizza;
 import com.ulima.sw.pizzaplanetac.beans.Usuario;
 
 import java.util.List;
@@ -24,6 +26,15 @@ import retrofit2.http.Query;
 
         @GET("getPedidos")
         Call<List<Pedido>> obtenerPedidos();
+
+        @GET("getMensaje")
+        Call<List<Mensaje>> obtenerMensajes();
+
+        @GET("getPizza")
+        Call<List<Pizza>> obtenerPizzas(@Query("id") int id);
+
+        @GET("Estado")
+        Call<Integer> actualizarEstado(@Query("pedido") int idPedido);
 
         //@GET("equipos/{id}")
         //Call<Equipo> obtenerEquipoID(@Path("id") int id);

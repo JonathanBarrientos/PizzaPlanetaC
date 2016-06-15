@@ -19,6 +19,7 @@ import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCal
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.ulima.sw.pizzaplanetac.R;
 import com.ulima.sw.pizzaplanetac.adapter.ListadoPedidosAdapter;
+import com.ulima.sw.pizzaplanetac.beans.Mensaje;
 import com.ulima.sw.pizzaplanetac.beans.Pedido;
 import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
 
@@ -62,7 +63,8 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
         });
 
         setPresenter(new GridPresenterImp(this));
-        GPresenter.obtenerPedidos();
+        //GPresenter.obtenerPedidos();
+        GPresenter.obtenerMensajes();
     }
 
     @Override
@@ -71,7 +73,7 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
     }
 
     @Override
-    public void mostrarPedidos(final List<Pedido> pedidos) {
+    public void mostrarPedidos(final List<Mensaje> pedidos) {
         adapter = new ListadoPedidosAdapter(pedidos,this);
         GridPedidos.setAdapter(adapter);
         dialog.dismiss();
@@ -79,7 +81,8 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(GridActivityT.this, ListadoPizzasActivity.class);
-                intent.putExtra("pizzas",(Serializable)pedidos.get(position).getPizzas());
+                intent.putExtra("idpizza",pedidos.get(position).getId());
+                intent.putExtra("idestado",pedidos.get(position).getEstado());
                 startActivity(intent);
 
             }
@@ -92,7 +95,8 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
     public void refreshItems() {
         // Load items
         // ...
-        GPresenter.obtenerPedidos();
+        //GPresenter.obtenerPedidos();
+        GPresenter.obtenerMensajes();
         // Load complete
         onItemsLoadComplete();
     }

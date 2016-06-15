@@ -2,6 +2,7 @@ package com.ulima.sw.pizzaplanetac.Pedido;
 
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
 import com.ulima.sw.pizzaplanetac.beans.Estado;
+import com.ulima.sw.pizzaplanetac.beans.Mensaje;
 import com.ulima.sw.pizzaplanetac.beans.Pedido;
 import com.ulima.sw.pizzaplanetac.beans.Pizza;
 
@@ -47,7 +48,7 @@ public class GridPresenterImp implements GridPresenter {
             }
         });*/
 
-        List<Pedido> pedidos = new ArrayList<>();
+       /* List<Pedido> pedidos = new ArrayList<>();
 
         Pedido p = new Pedido();
         Estado e = new Estado();
@@ -106,7 +107,31 @@ public class GridPresenterImp implements GridPresenter {
 
         pedidos.add(pt);
 
-        Gview.mostrarPedidos(pedidos);
+        //Gview.mostrarPedidos(pedidos);*/
+
+    }
+
+    @Override
+    public void obtenerMensajes() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                //.baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
+                .baseUrl("http://pizzac.mybluemix.net/webresources/generic/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PizzaPService service = retrofit.create(PizzaPService.class);
+        service.obtenerMensajes().enqueue(new Callback<List<Mensaje>> () {
+            @Override
+            public void onResponse(Call<List<Mensaje>> call, Response<List<Mensaje>> response) {
+                Gview.mostrarPedidos(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Mensaje>>  call, Throwable t) {
+
+            }
+        });
 
     }
 }

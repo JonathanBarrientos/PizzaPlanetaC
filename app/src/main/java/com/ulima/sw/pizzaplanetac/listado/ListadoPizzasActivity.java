@@ -9,8 +9,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.ksoichiro.android.observablescrollview.ObservableListView;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
@@ -18,7 +22,9 @@ import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.ulima.sw.pizzaplanetac.R;
 import com.ulima.sw.pizzaplanetac.adapter.ListadoPizzasAdapter;
 import com.ulima.sw.pizzaplanetac.beans.Pizza;
+import com.ulima.sw.pizzaplanetac.ingredientes.IngredientesActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ListadoPizzasActivity extends AppCompatActivity implements ListadoPizzasView, ObservableScrollViewCallbacks {
@@ -26,14 +32,32 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
     private ListadoPizzasPresenter lPresenter;
     private ObservableListView lstPizzas;
     private ProgressDialog dialog;
+    private int pos;
+    private ActionBar supportActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Listado Pizzas");
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setHomeButtonEnabled(true);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        Intent intentPasado = getIntent();
+        switch(intentPasado.getIntExtra("idestado",0)){
+            case 0:
+                supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(239,65,54)));
+                break;
+            case 1:
+                supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(246,222,54)));
+                break;
+            case 2:
+                supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(140,198,62)));
+                break;
+        }
+
 
         setContentView(R.layout.activity_listado_pizzas);
 
@@ -49,8 +73,9 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         lstPizzas.setScrollViewCallbacks(this);
 
         setPresenter(new ListadoPizzasPresenterImp(this));
-        Intent intentPasado = getIntent();
-        lPresenter.obtenerListaP((List<Pizza>)intentPasado.getSerializableExtra("pizzas"));
+
+        pos = intentPasado.getIntExtra("idpizza",0);
+        lPresenter.obtenerListaP(pos);
 
 
     }
@@ -61,15 +86,64 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
     }
 
     @Override
-    public void mostrarPizzas(List<Pizza> Pizzas) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public void mostrarPizzas(final List<Pizza> Pizzas) {
         ListadoPizzasAdapter adapter = new ListadoPizzasAdapter(Pizzas,this);
         lstPizzas.setAdapter(adapter);
         dialog.dismiss();
+        lstPizzas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListadoPizzasActivity.this, IngredientesActivity.class);
+                intent.putExtra("ingredientes",(Serializable)Pizzas.get(position).getIng());
+                startActivity(intent);
+
+            }
+
+        });
+    }
+
+    @Override
+    public void toAst(int num) {
+        switch(num){
+            case 1:
+                Toast.makeText(this, "En Proceso", Toast.LENGTH_SHORT).show();
+                //lstPizzas.setBackgroundColor(Color.rgb(246,222,54));
+                supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(246,222,54)));
+                break;
+            case 2:
+                Toast.makeText(this, "Preparado", Toast.LENGTH_SHORT).show();
+                //lstPizzas.setBackgroundColor(Color.rgb(140,198,62));
+                supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(140,198,62)));
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finish();
+                break;
+            case 3:
+                Toast.makeText(this, "En Camino", Toast.LENGTH_SHORT).show();
+                break;
+            case 4:
+                Toast.makeText(this, "Entregado", Toast.LENGTH_SHORT).show();
+                break;
+            case 5:
+                Toast.makeText(this, "Entregado", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
+
             case android.R.id.home:
                 if (getParentActivityIntent() == null) {
                     Log.i("TAG", "You have forgotten to specify the parentActivityName in the AndroidManifest!");
@@ -78,6 +152,8 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
                     NavUtils.navigateUpFromSameTask(this);
                 }
                 return true;
+            case R.id.men_op1:
+                lPresenter.actualizarEstado(pos);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -94,17 +170,17 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
 
     @Override
     public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-        ActionBar ab = getSupportActionBar();
-        if (ab == null) {
+
+        if (supportActionBar == null) {
             return;
         }
         if (scrollState == ScrollState.UP) {
-            if (ab.isShowing()) {
-                ab.hide();
+            if (supportActionBar.isShowing()) {
+                supportActionBar.hide();
             }
         } else if (scrollState == ScrollState.DOWN) {
-            if (!ab.isShowing()) {
-                ab.show();
+            if (!supportActionBar.isShowing()) {
+                supportActionBar.show();
             }
         }
 

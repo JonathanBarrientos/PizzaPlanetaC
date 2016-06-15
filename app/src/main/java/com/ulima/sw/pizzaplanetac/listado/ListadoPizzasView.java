@@ -10,4 +10,5 @@ import java.util.List;
 public interface ListadoPizzasView {
     public void setPresenter(ListadoPizzasPresenter presenter);
     public void mostrarPizzas(List<Pizza> Pizzas);
+    public void toAst(int num);
 }
