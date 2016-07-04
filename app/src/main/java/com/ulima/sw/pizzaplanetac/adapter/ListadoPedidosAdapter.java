@@ -62,11 +62,11 @@ public class ListadoPedidosAdapter extends BaseAdapter {
         cont = position + 1;
         viewHolder.txtPedido.setText("Pedido #"+cont);
         viewHolder.txtHora.setText(pedido.getHora());
-        if (pedido.getEstado()== 0) {
+        if (pedido.getEstado()== 1) {
             viewHolder.imgE.setImageResource(R.drawable.rojo);
-        }else if (pedido.getEstado() == 1) {
-            viewHolder.imgE.setImageResource(R.drawable.amarillo);
         }else if (pedido.getEstado() == 2) {
+            viewHolder.imgE.setImageResource(R.drawable.amarillo);
+        }else if (pedido.getEstado() == 3) {
                 viewHolder.imgE.setImageResource(R.drawable.verde);
         }
 

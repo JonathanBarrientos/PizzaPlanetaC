@@ -21,11 +21,8 @@ import retrofit2.http.Query;
  */
 
     public interface PizzaPService {
-        @GET("loginTrabajador")
+        @GET("login")
         Call<String> obtenerLogin(@Query("usuario") String usuario, @Query("password") String password);
-
-        @GET("getPedidos")
-        Call<List<Pedido>> obtenerPedidos();
 
         @GET("getMensaje")
         Call<List<Mensaje>> obtenerMensajes();

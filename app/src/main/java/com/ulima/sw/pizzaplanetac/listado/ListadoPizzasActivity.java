@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.github.ksoichiro.android.observablescrollview.ObservableListView;
@@ -47,13 +46,13 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         }
         Intent intentPasado = getIntent();
         switch(intentPasado.getIntExtra("idestado",0)){
-            case 0:
+            case 1:
                 supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(239,65,54)));
                 break;
-            case 1:
+            case 2:
                 supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(246,222,54)));
                 break;
-            case 2:
+            case 3:
                 supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(140,198,62)));
                 break;
         }
