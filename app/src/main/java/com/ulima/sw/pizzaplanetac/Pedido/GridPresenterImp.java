@@ -115,8 +115,8 @@ public class GridPresenterImp implements GridPresenter {
     public void obtenerMensajes() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                //.baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
-                .baseUrl("http://pizzac.mybluemix.net/webresources/generic/")
+                .baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
+                //.baseUrl("http://pizzac.mybluemix.net/webresources/generic/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

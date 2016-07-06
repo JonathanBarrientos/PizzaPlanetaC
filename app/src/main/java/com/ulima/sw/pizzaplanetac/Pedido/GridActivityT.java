@@ -33,6 +33,7 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
     private ObservableGridView GridPedidos;
     private GridPresenter GPresenter;
     private ListadoPedidosAdapter adapter;
+    private String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Intent intentPasado = getIntent();
+        usuario = intentPasado.getStringExtra("usuario");
 
         setContentView(R.layout.activity_grid);
         dialog = new ProgressDialog(this);
@@ -65,6 +68,7 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
         setPresenter(new GridPresenterImp(this));
         //GPresenter.obtenerPedidos();
         GPresenter.obtenerMensajes();
+
     }
 
     @Override
@@ -82,6 +86,7 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(GridActivityT.this, ListadoPizzasActivity.class);
                 intent.putExtra("idpizza",pedidos.get(position).getId());
+                intent.putExtra("usuario",usuario);
                 intent.putExtra("idestado",pedidos.get(position).getEstado());
                 startActivity(intent);
 

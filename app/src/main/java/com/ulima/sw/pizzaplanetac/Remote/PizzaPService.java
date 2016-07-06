@@ -31,17 +31,9 @@ import retrofit2.http.Query;
         Call<List<Pizza>> obtenerPizzas(@Query("id") int id);
 
         @GET("Estado")
-        Call<Integer> actualizarEstado(@Query("pedido") int idPedido);
-
-        //@GET("equipos/{id}")
-        //Call<Equipo> obtenerEquipoID(@Path("id") int id);
+        Call<Integer> actualizarEstado(@Query("pedido") int idPedido,@Query("usuario") String usuario);
 
 
-        //@GET("alumnos?sin_equipo=true")
-        //Call<List<Alumno>> obtenerAlumnosSEqu();
-
-        //@POST("equipos/{id}/{codigo_alumno}")
-        //Call<Mensaje> agregarAlumnoaEquipo(@Path("id") int id, @Path("codigo_alumno") String codigo);
     }
 
 

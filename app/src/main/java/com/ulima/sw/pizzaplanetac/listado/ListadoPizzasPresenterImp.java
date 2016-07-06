@@ -33,7 +33,7 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
 
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
-                .baseUrl("http://pizzac.mybluemix.net/webresources/generic/")
+                .baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -53,16 +53,16 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
     }
 
     @Override
-    public void actualizarEstado(int idPedido) {
+    public void actualizarEstado(int idPedido, String usuario) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
-                .baseUrl("http://pizzac.mybluemix.net/webresources/generic/")
+                .baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         PizzaPService service = retrofit.create(PizzaPService.class);
-        service.actualizarEstado(idPedido).enqueue(new Callback<Integer>() {
+        service.actualizarEstado(idPedido, usuario).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 lview.toAst(response.body());

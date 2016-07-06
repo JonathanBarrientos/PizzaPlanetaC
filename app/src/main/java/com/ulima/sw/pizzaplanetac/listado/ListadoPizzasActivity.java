@@ -32,6 +32,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
     private ObservableListView lstPizzas;
     private ProgressDialog dialog;
     private int pos;
+    private String usuario;
     private ActionBar supportActionBar;
 
     @Override
@@ -46,13 +47,13 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         }
         Intent intentPasado = getIntent();
         switch(intentPasado.getIntExtra("idestado",0)){
-            case 1:
+            case 0:
                 supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(239,65,54)));
                 break;
-            case 2:
+            case 1:
                 supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(246,222,54)));
                 break;
-            case 3:
+            case 2:
                 supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(140,198,62)));
                 break;
         }
@@ -74,6 +75,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         setPresenter(new ListadoPizzasPresenterImp(this));
 
         pos = intentPasado.getIntExtra("idpizza",0);
+        usuario = intentPasado.getStringExtra("usuario");
         lPresenter.obtenerListaP(pos);
 
 
@@ -152,7 +154,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
                 }
                 return true;
             case R.id.men_op1:
-                lPresenter.actualizarEstado(pos);
+                lPresenter.actualizarEstado(pos,usuario);
         }
         return super.onOptionsItemSelected(item);
     }

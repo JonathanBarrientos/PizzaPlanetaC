@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     private LoginPresenter lPresenter;
     private EditText eteUsuario, etePassword;
     private ProgressDialog dialog;
+    private String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         dialog.setIndeterminate(true);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
-        String usuario = eteUsuario.getText().toString().trim();
+        usuario = eteUsuario.getText().toString().trim();
         String password = etePassword.getText().toString();
         Usuario user= new Usuario(usuario, password);
         setPresenter(new LoginPresenterImp(this));
@@ -60,8 +61,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
         if (resp.equalsIgnoreCase("1")){
             Intent intent = new Intent(this, GridActivityT.class);
+            intent.putExtra("usuario",usuario);
             eteUsuario.setText(null);
             etePassword.setText(null);
+
             startActivity(intent);
         }else{
             Toast.makeText(this, "Credenciales Erradas", Toast.LENGTH_SHORT).show();

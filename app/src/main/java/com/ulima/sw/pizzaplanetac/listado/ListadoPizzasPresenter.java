@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface ListadoPizzasPresenter {
     public void obtenerListaP(int idpizzas);
-    public void actualizarEstado(int idPedido);
+    public void actualizarEstado(int idPedido, String usuario);
 }
