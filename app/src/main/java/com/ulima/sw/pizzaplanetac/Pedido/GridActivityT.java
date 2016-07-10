@@ -2,13 +2,11 @@ package com.ulima.sw.pizzaplanetac.Pedido;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +18,8 @@ import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.ulima.sw.pizzaplanetac.R;
 import com.ulima.sw.pizzaplanetac.adapter.ListadoPedidosAdapter;
 import com.ulima.sw.pizzaplanetac.beans.Mensaje;
-import com.ulima.sw.pizzaplanetac.beans.Pedido;
 import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class GridActivityT extends AppCompatActivity implements GridViewT,ObservableScrollViewCallbacks {
@@ -87,6 +83,7 @@ public class GridActivityT extends AppCompatActivity implements GridViewT,Observ
                 Intent intent = new Intent(GridActivityT.this, ListadoPizzasActivity.class);
                 intent.putExtra("idpizza",pedidos.get(position).getId());
                 intent.putExtra("usuario",usuario);
+                intent.putExtra("distrito",pedidos.get(position).getDistrito());
                 intent.putExtra("idestado",pedidos.get(position).getEstado());
                 startActivity(intent);
 

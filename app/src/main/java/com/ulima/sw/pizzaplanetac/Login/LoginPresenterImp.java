@@ -1,11 +1,7 @@
 package com.ulima.sw.pizzaplanetac.Login;
 
-import android.content.Intent;
-import android.widget.Toast;
-
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
 import com.ulima.sw.pizzaplanetac.beans.Usuario;
-import com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

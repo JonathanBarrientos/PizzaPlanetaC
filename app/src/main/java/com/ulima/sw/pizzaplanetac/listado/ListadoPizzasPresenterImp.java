@@ -1,13 +1,8 @@
 package com.ulima.sw.pizzaplanetac.listado;
 
-import android.widget.Toast;
-
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
-import com.ulima.sw.pizzaplanetac.beans.Mensaje;
-import com.ulima.sw.pizzaplanetac.beans.Pedido;
 import com.ulima.sw.pizzaplanetac.beans.Pizza;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -53,7 +48,7 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
     }
 
     @Override
-    public void actualizarEstado(int idPedido, String usuario) {
+    public void actualizarEstado(int idPedido, String usuario, String distrito) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://pizzaplanetac.mybluemix.net/webresources/generic/")
@@ -62,7 +57,7 @@ public class ListadoPizzasPresenterImp implements ListadoPizzasPresenter {
                 .build();
 
         PizzaPService service = retrofit.create(PizzaPService.class);
-        service.actualizarEstado(idPedido, usuario).enqueue(new Callback<Integer>() {
+        service.actualizarEstado(idPedido, usuario, distrito).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 lview.toAst(response.body());

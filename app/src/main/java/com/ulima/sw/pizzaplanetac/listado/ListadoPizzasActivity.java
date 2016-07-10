@@ -33,6 +33,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
     private ProgressDialog dialog;
     private int pos;
     private String usuario;
+    private String distrito;
     private ActionBar supportActionBar;
 
     @Override
@@ -76,6 +77,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
 
         pos = intentPasado.getIntExtra("idpizza",0);
         usuario = intentPasado.getStringExtra("usuario");
+        distrito = intentPasado.getStringExtra("distrito");
         lPresenter.obtenerListaP(pos);
 
 
@@ -154,7 +156,7 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
                 }
                 return true;
             case R.id.men_op1:
-                lPresenter.actualizarEstado(pos,usuario);
+                lPresenter.actualizarEstado(pos,usuario,distrito);
         }
         return super.onOptionsItemSelected(item);
     }

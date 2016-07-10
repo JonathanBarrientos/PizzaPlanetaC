@@ -1,12 +1,8 @@
 package com.ulima.sw.pizzaplanetac.Pedido;
 
 import com.ulima.sw.pizzaplanetac.Remote.PizzaPService;
-import com.ulima.sw.pizzaplanetac.beans.Estado;
 import com.ulima.sw.pizzaplanetac.beans.Mensaje;
-import com.ulima.sw.pizzaplanetac.beans.Pedido;
-import com.ulima.sw.pizzaplanetac.beans.Pizza;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
