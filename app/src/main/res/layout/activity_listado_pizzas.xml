@@ -6,7 +6,7 @@
     tools:context="com.ulima.sw.pizzaplanetac.listado.ListadoPizzasActivity"
     android:background="#FFFFFF">
 
-    <com.github.ksoichiro.android.observablescrollview.ObservableListView
+    <ListView
         android:id="@+id/lstPizza"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

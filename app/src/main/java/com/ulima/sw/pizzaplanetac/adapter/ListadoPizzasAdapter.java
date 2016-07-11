@@ -51,16 +51,14 @@ public class ListadoPizzasAdapter extends BaseAdapter{
     public View getView(int position, View view, ViewGroup viewGroup) {
         int acu;
         ViewHolder viewHolder;
-        if (view == null){
+
             view = mInflater.inflate(R.layout.pizzaitm, null);
             viewHolder = new ViewHolder();
             viewHolder.iviPizza =(ImageView) view.findViewById(R.id.imgpizza);
             viewHolder.tviNombre =  (TextView)view.findViewById(R.id.txtNombre);
             viewHolder.tviTamaño = (TextView)view.findViewById(R.id.txtTam);
             viewHolder.tviNum = (TextView)view.findViewById(R.id.txtOrden);
-        }else{
-            viewHolder = (ViewHolder) view.getTag();
-        }
+
 
         Pizza pizza = lProductos.get(position);
         acu = position +1;

@@ -13,10 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import com.github.ksoichiro.android.observablescrollview.ObservableListView;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+
 import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.ulima.sw.pizzaplanetac.R;
 import com.ulima.sw.pizzaplanetac.adapter.ListadoPizzasAdapter;
@@ -26,10 +26,10 @@ import com.ulima.sw.pizzaplanetac.ingredientes.IngredientesActivity;
 import java.io.Serializable;
 import java.util.List;
 
-public class ListadoPizzasActivity extends AppCompatActivity implements ListadoPizzasView, ObservableScrollViewCallbacks {
+public class ListadoPizzasActivity extends AppCompatActivity implements ListadoPizzasView {
 
     private ListadoPizzasPresenter lPresenter;
-    private ObservableListView lstPizzas;
+    private ListView lstPizzas;
     private ProgressDialog dialog;
     private int pos;
     private String usuario;
@@ -70,8 +70,8 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         dialog.show();
 
 
-        lstPizzas = (ObservableListView)findViewById(R.id.lstPizza);
-        lstPizzas.setScrollViewCallbacks(this);
+        lstPizzas = (ListView)findViewById(R.id.lstPizza);
+
 
         setPresenter(new ListadoPizzasPresenterImp(this));
 
@@ -123,11 +123,11 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
                 Toast.makeText(this, "Preparado", Toast.LENGTH_SHORT).show();
                 //lstPizzas.setBackgroundColor(Color.rgb(140,198,62));
                 supportActionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(140,198,62)));
-                try {
+                /*try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
+                }*/
                 finish();
                 break;
             case 3:
@@ -161,31 +161,5 @@ public class ListadoPizzasActivity extends AppCompatActivity implements ListadoP
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
 
-    }
-
-    @Override
-    public void onDownMotionEvent() {
-
-    }
-
-    @Override
-    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-
-        if (supportActionBar == null) {
-            return;
-        }
-        if (scrollState == ScrollState.UP) {
-            if (supportActionBar.isShowing()) {
-                supportActionBar.hide();
-            }
-        } else if (scrollState == ScrollState.DOWN) {
-            if (!supportActionBar.isShowing()) {
-                supportActionBar.show();
-            }
-        }
-
-    }
 }

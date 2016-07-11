@@ -48,16 +48,14 @@ public class ListadoPedidosAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
         int cont;
         ViewHolder viewHolder;
-        if (view == null){
+
             view = mInflater.inflate(R.layout.pedidoitm, null);
             viewHolder = new ViewHolder();
             viewHolder.imgE =(ImageView) view.findViewById(R.id.imgE);
             viewHolder.txtPedido = (TextView) view.findViewById(R.id.txtPedido);
             viewHolder.txtHora=(TextView) view.findViewById(R.id.txtHora);
             view.setTag(viewHolder);
-        }else{
-            viewHolder = (ViewHolder) view.getTag();
-        }
+
         final Mensaje pedido = lPedidos.get(position);
         cont = position + 1;
         viewHolder.txtPedido.setText("Pedido #"+cont);
